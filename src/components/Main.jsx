@@ -8,6 +8,7 @@ const Main = () => {
 	const [form, setForm] = useState({ site: "", username: "", password: "" })
 	const [passwordsArray, setPasswordsArray] = useState([])
 	const ref = useRef()
+	const ShowPass = useRef()
 
 	useEffect(() => {
 		let passwords = localStorage.getItem("passwords")
@@ -16,7 +17,6 @@ const Main = () => {
 		}
 	}, [])
 
-	const ShowPass = useRef()
 
 
 
@@ -25,7 +25,6 @@ const Main = () => {
 
             setPasswordsArray([...passwordsArray, {...form, id: uuidv4()}])
             localStorage.setItem("passwords", JSON.stringify([...passwordsArray, {...form, id: uuidv4()}]))
-            console.log([...passwordsArray, form])
             setForm({ site: "", username: "", password: "" })
             toast('Password saved!', {
             position: "top-right",
@@ -46,7 +45,6 @@ const Main = () => {
 
 
 	const deletePassword = (id) => {
-		console.log("Deleting password with id ", id)
 		let c = confirm("Do you really want to delete this password?")
 		if (c) {
 			setPasswordsArray(passwordsArray.filter(item => item.id !== id))
@@ -55,8 +53,6 @@ const Main = () => {
 
 	}
 	const editPassword = (id) => {
-
-		console.log("Editing password with id ", id)
 		setForm(passwordsArray.filter(i => i.id === id)[0])
 		setPasswordsArray(passwordsArray.filter(item => item.id !== id))
 
@@ -66,14 +62,13 @@ const Main = () => {
 
 
 	const showpassowrd = (e) => {
-		if (e.target.src.includes("./eyecross.png")) {
-			e.target.src = "./eye.png"
+		if (ShowPass.current.src.includes("icons/eyecross.png")) {
+			ShowPass.current.src = "icons/eye.png"
 			ref.current.type = "password"
 		} else {
-			e.target.src = "./eyecross.png"
+			ShowPass.current.src = "icons/eyecross.png"
 			ref.current.type = "text"
 		}
-		console.log(e.target.src, e.target);
 	}
 
 	const copytext = (text) => {
@@ -101,7 +96,7 @@ const Main = () => {
 						<input value={form.username} onChange={handlechange} type="text" name="username" id="useranme" className='outline-none border border-green-600 rounded-full  px-4 py-[2px] w-full text-black' placeholder='Username' />
 						<div className="relative">
 							<input value={form.password} onChange={handlechange} type="password" name="password" id="pass" className='outline-none border w-full border-green-600 rounded-full px-4 py-[2px]  text-black' placeholder='Password' ref={ref} />
-							<span className="bg-transparent absolute top-[5px] right-2 text-black"><img ref={ShowPass} onClick={showpassowrd} src="./eye.png" width={26} alt="" /></span>
+							<span className="bg-transparent absolute top-[5px] right-2 text-black"><img ref={ShowPass} onClick={showpassowrd} src="icons/eye.png" width={26} alt="" /></span>
 						</div>
 
 					</div>

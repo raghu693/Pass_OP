@@ -10,7 +10,7 @@ const NavBar = () => {
                     <span className="text-green-500">    OP/&gt;</span>
                 </div>
                 <div className='bg-green-600 rounded-full flex items-center cursor-pointer justify-center pr-2 ring-2 ring-white'>
-                    <img className='w-8 invert ' src="./github.svg" alt="" />
+                    <img className='w-8 invert' src="icons/github.svg" alt="" />
                     <span className='text-md text-white font-bold'> 
                     GitHub
                     </span>
