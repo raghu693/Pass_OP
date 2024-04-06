@@ -65,11 +65,11 @@ const Main = () => {
 
 
 	const showpassowrd = (e) => {
-		if (e.target.src.includes("./icons/eyecross.png")) {
-			e.target.src = "./icons/eye.png"
+		if (e.target.src.includes("./eyecross.png")) {
+			e.target.src = "./eye.png"
 			ref.current.type = "password"
 		} else {
-			e.target.src = "./icons/eyecross.png"
+			e.target.src = "./eyecross.png"
 			ref.current.type = "text"
 		}
 
@@ -100,7 +100,7 @@ const Main = () => {
 						<input value={form.username} onChange={handlechange} type="text" name="username" id="" className='outline-none border border-green-600 rounded-full  px-4 py-[2px] w-full text-black' placeholder='Username' />
 						<div className="relative">
 							<input value={form.password} onChange={handlechange} type="password" name="password" id="" className='outline-none border w-full border-green-600 rounded-full px-4 py-[2px]  text-black' placeholder='Password' ref={ref} />
-							<span className="bg-transparent absolute top-[5px] right-2 text-black"><img onClick={showpassowrd} src="../icons/eye.png" width={26} alt="" /></span>
+							<span className="bg-transparent absolute top-[5px] right-2 text-black"><img onClick={showpassowrd} src="./eye.png" width={26} alt="" /></span>
 						</div>
 
 					</div>
