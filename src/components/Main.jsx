@@ -65,15 +65,15 @@ const Main = () => {
 
 
 
-	const showpassowrd = () => {
-		if (ShowPass.current.src === "./eyecross.png") {
-			ShowPass.current.src = "./eye.png"
+	const showpassowrd = (e) => {
+		if (e.target.src.includes("./eyecross.png")) {
+			e.target.src = "./eye.png"
 			ref.current.type = "password"
 		} else {
-			ShowPass.current.src = "./eyecross.png"
+			e.target.src = "./eyecross.png"
 			ref.current.type = "text"
 		}
-
+		console.log(e.target.src, e.target);
 	}
 
 	const copytext = (text) => {
@@ -96,11 +96,11 @@ const Main = () => {
 				</h1>
 				<p className='text-xl text-center text-green-600'>Your own password manager</p>
 				<div className="text-white flex flex-col items-center p-4 gap-4">
-					<input value={form.site} onChange={handlechange} type="text" name="site" id="" className='outline-none border border-green-600 rounded-full px-4 py-[2px] w-full  text-black' placeholder='Enter Site URL' />
+					<input value={form.site} onChange={handlechange} type="text" name="site" id="site" className='outline-none border border-green-600 rounded-full px-4 py-[2px] w-full  text-black' placeholder='Enter Site URL' />
 					<div className='flex flex-col lg:flex-row justify-between gap-2 w-full'>
-						<input value={form.username} onChange={handlechange} type="text" name="username" id="" className='outline-none border border-green-600 rounded-full  px-4 py-[2px] w-full text-black' placeholder='Username' />
+						<input value={form.username} onChange={handlechange} type="text" name="username" id="useranme" className='outline-none border border-green-600 rounded-full  px-4 py-[2px] w-full text-black' placeholder='Username' />
 						<div className="relative">
-							<input value={form.password} onChange={handlechange} type="password" name="password" id="" className='outline-none border w-full border-green-600 rounded-full px-4 py-[2px]  text-black' placeholder='Password' ref={ref} />
+							<input value={form.password} onChange={handlechange} type="password" name="password" id="pass" className='outline-none border w-full border-green-600 rounded-full px-4 py-[2px]  text-black' placeholder='Password' ref={ref} />
 							<span className="bg-transparent absolute top-[5px] right-2 text-black"><img ref={ShowPass} onClick={showpassowrd} src="./eye.png" width={26} alt="" /></span>
 						</div>
 
