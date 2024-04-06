@@ -22,9 +22,9 @@ const Main = () => {
 
 	const savePassword = () => {
         if(form.site.length >3 && form.username.length >3 &&form.password.length >3){
-
             setPasswordsArray([...passwordsArray, {...form, id: uuidv4()}])
             localStorage.setItem("passwords", JSON.stringify([...passwordsArray, {...form, id: uuidv4()}]))
+            console.log([...passwordsArray, form])
             setForm({ site: "", username: "", password: "" })
             toast('Password saved!', {
             position: "top-right",
@@ -45,6 +45,7 @@ const Main = () => {
 
 
 	const deletePassword = (id) => {
+		console.log("Deleting password with id ", id)
 		let c = confirm("Do you really want to delete this password?")
 		if (c) {
 			setPasswordsArray(passwordsArray.filter(item => item.id !== id))
@@ -53,6 +54,8 @@ const Main = () => {
 
 	}
 	const editPassword = (id) => {
+
+		console.log("Editing password with id ", id)
 		setForm(passwordsArray.filter(i => i.id === id)[0])
 		setPasswordsArray(passwordsArray.filter(item => item.id !== id))
 
@@ -69,6 +72,7 @@ const Main = () => {
 			ShowPass.current.src = "icons/eyecross.png"
 			ref.current.type = "text"
 		}
+		console.log(e.target.src, e.target);
 	}
 
 	const copytext = (text) => {
