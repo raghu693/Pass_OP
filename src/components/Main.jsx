@@ -65,8 +65,8 @@ const Main = () => {
 
 
 
-	const showpassowrd = (e) => {
-		if (ShowPass.current.src.includes("./eyecross.png")) {
+	const showpassowrd = () => {
+		if (ShowPass.current.src === "./eyecross.png") {
 			ShowPass.current.src = "./eye.png"
 			ref.current.type = "password"
 		} else {
