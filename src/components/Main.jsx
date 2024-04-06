@@ -72,7 +72,6 @@ const Main = () => {
 			ShowPass.current.src = "icons/eyecross.png"
 			ref.current.type = "text"
 		}
-		console.log(e.target.src, e.target);
 	}
 
 	const copytext = (text) => {
